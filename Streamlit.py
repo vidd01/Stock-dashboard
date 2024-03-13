@@ -1,3 +1,4 @@
+import datetime
 import streamlit as st, pandas as pd, numpy as np
 from datetime import date
 import yfinance as yf
@@ -9,9 +10,9 @@ import plotly.express as px
 st.title('Financial Data versus Macro Economic Indicators')
 
 ticker=st.sidebar.text_input('Name of Stock',value="MSFT")
-stocks = ('INDIA', 'CANADA', 'USA')
+stocks = ('USA','INDIA', 'CANADA')
 selected_stock = st.sidebar.selectbox('Select Country ', stocks)
-start_date= st.sidebar.date_input('Start Date')
+start_date= st.sidebar.date_input('Start Date',datetime.date(2024, 1, 1))
 end_date= st.sidebar.date_input('End Date')
 
 data=yf.download(ticker,start=start_date,end=end_date)
